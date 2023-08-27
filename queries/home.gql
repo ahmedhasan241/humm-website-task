@@ -1,0 +1,45 @@
+query GetHeader {
+  homepage_translations {
+    home_intro_cover {
+      id
+    }
+    home_about_title
+    id
+  }
+  pages_translations {
+    content
+    id
+    title
+  }
+}
+query GetHome {
+  homepage {
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      id
+      home_about_description
+      home_about_title
+      home_intro_title
+      home_intro_url
+      home_intro_cover {
+        id
+      }
+      brands_list_func {
+        count
+      }
+    }
+    id
+  }
+}
+
+query GetBrands($limit: Int) {
+  homepage_translations {
+    brands_list(limit: $limit) {
+      id
+      directus_files_id {
+        id
+      }
+    }
+  }
+}
+
+

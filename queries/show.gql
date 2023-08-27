@@ -1,0 +1,96 @@
+query SingleShow($category: String, $episode: String) {
+  shows(filter: { slug: { _eq: $category } }) {
+    all_episodes(filter: { slug: { _eq: $episode } }) {
+      date_created
+      date_updated
+      press_link
+      slug
+      sort
+      status
+      id
+      type
+      translations {
+        content
+        description
+        id
+        title
+      }
+      user_created {
+        first_name
+        last_name
+      }
+      video
+    }
+    translations {
+      title
+    }
+  }
+}
+
+query GetSingleShows($slug: String, $limit: Int) {
+  shows(filter: { slug: { _eq: $slug } }) {
+    all_episodes_func {
+      count
+    }
+    all_episodes(limit: $limit) {
+      date_created
+      date_updated
+      press_link
+      slug
+      sort
+      status
+      id
+      type
+      translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+        content
+        cover {
+          id
+        }
+        description
+        id
+        title
+      }
+      user_created {
+        first_name
+        last_name
+      }
+      video
+    }
+    date_created
+    date_updated
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      description
+      id
+      title
+      cover {
+        id
+      }
+    }
+  }
+}
+
+query GetShows($limit: Int) {
+  shows(
+    limit: $limit
+    filter: {
+      translations: { languages_code: { code: { _eq: "ar-EG" } } }
+      status: { _eq: "published" }
+    }
+  ) {
+    date_created
+    id
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      description
+      id
+      title
+      cover {
+        id
+      }
+    }
+    status
+    slug
+    all_episodes_func {
+      count
+    }
+  }
+}

@@ -1,0 +1,76 @@
+query GetArticle($limit: Int, $type: String) {
+  Article(
+    sort: "-date_created"
+    limit: $limit
+    filter: {
+      translations: { languages_code: { code: { _eq: "ar-EG" } } }
+      status: { _eq: "published" }
+      type: { _eq: $type }
+    }
+  ) {
+    slug
+    type
+    press_link
+    video
+    date_created
+    user_created {
+      first_name
+      last_name
+    }
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      title
+      cover {
+        id
+      }
+      content
+      description
+    }
+    category {
+      id
+      slug
+      translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+        title
+        description
+      }
+    }
+    id
+  }
+}
+query GetSingleArticle($type: String, $slug: String) {
+  Article(
+    sort: "-date_created"
+    filter: {
+      translations: { languages_code: { code: { _eq: "ar-EG" } } }
+      status: { _eq: "published" }
+      type: { _eq: $type }
+      slug: { _eq: $slug }
+    }
+  ) {
+    slug
+    type
+    press_link
+    video
+    date_created
+    user_created {
+      first_name
+      last_name
+    }
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      title
+      cover {
+        id
+      }
+      content
+      description
+    }
+    category {
+      id
+      slug
+      translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+        title
+        description
+      }
+    }
+    id
+  }
+}

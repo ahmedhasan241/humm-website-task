@@ -1,0 +1,23 @@
+mutation CreateContactItem(
+  $message: String
+  $name: String
+  $phone: String
+  $source: String
+  $status: String! = "published"
+  $type: String 
+  $career: Int
+  $email: String
+) {
+  create_Contact_item(
+    data: {
+      status: $status
+      career: $career
+      email: $email
+      message: $message
+      name: $name
+      phone: $phone
+      source: $source
+      type: $type
+    }
+  )
+}

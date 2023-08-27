@@ -1,0 +1,33 @@
+query GetCategory($slug: String) {
+  category(filter: { slug: { _eq: $slug } }) {
+    translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+      title
+      cover {
+        id
+      }
+      category_id {
+        articles_func {
+          count
+        }
+        articles {
+          translations(filter: { languages_code: { code: { _eq: "ar-EG" } } }) {
+            id
+            title
+            cover {
+              id
+            }
+          }
+          user_created {
+            first_name
+            last_name
+          }
+          category {
+            slug
+          }
+          date_created
+          slug
+        }
+      }
+    }
+  }
+}

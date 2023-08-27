@@ -1,0 +1,20 @@
+query GetPoster {
+  posters {
+    id
+    translations {
+      id
+      normal2_cover {
+        id
+      }
+      normal_cover {
+        id
+      }
+      wide2_cover {
+        id
+      }
+      wide_cover {
+        id
+      }
+    }
+  }
+}
