@@ -215,7 +215,7 @@
       >
         اعلن مع همم.
       </h1>
-      <div class="contact-form p-5">
+      <div class="contact-form p-0 p-md-5">
         <form action="" class="mt-5 w-100" @submit.prevent="onSubmit">
           <div class="row row-cols-1 row-cols-md-2">
             <div class="col mb-3">
